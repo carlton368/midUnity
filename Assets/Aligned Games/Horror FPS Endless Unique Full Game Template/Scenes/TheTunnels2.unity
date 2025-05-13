@@ -7342,6 +7342,10 @@ PrefabInstance:
       propertyPath: fadeDuration
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1690453566, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
       propertyPath: m_Range
       value: 60
@@ -7377,6 +7381,10 @@ PrefabInstance:
     - target: {fileID: 1830622246742262912, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
       propertyPath: IgnoreMe.m_Bits
       value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830622246742263039, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1830622246757680715, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
       propertyPath: m_Name
