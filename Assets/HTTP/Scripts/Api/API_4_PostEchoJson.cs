@@ -6,7 +6,7 @@ namespace HTTP
 {
     public class API_4_PostEchoJson : ApiBase
     {
-        private static string Uri => $"{Common.Domain}/post-echo-json";
+        private static string Uri => $"{Common.Domain}/quiz/submit";
 
         public static UnityWebRequest CreateWebRequest(string name, int age)
         {

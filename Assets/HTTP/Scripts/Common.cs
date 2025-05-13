@@ -5,7 +5,7 @@ namespace HTTP
 {
     public static class Common
     {
-        public const string Domain = "http://127.0.0.1:7788";
+        public const string Domain = "http://192.168.0.154:8080";
         
         public static byte[] AudioClipToWav(AudioClip clip)
         {
