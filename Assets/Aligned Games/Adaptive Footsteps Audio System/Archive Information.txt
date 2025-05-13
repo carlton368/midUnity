@@ -1,0 +1,3 @@
+This asset conflicts with other scripts in this template package. Its scripts have been put into their own namespace to avoid any confliction. 
+
+If you wish to use it as a standalone asset, please export it to a new project. 

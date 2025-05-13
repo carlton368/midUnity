@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: c414bc74187b62e43b4d6a02c6804544
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Martius
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315065
+  packageName: Horror FPS Endless Unique Full Game Template
+  packageVersion: 1.1
+  assetPath: Assets/Aligned Games/Horror FPS Endless Unique Full Game Template/Interface/Fonts/Martius/MartiusItalic-PVA4E.ttf
+  uploadId: 749155

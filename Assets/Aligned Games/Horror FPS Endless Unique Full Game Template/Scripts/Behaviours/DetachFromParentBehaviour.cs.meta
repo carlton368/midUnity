@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a903fa4ed847e8a4d82cb63ef87e646a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315065
+  packageName: Horror FPS Endless Unique Full Game Template
+  packageVersion: 1.1
+  assetPath: Assets/Aligned Games/Horror FPS Endless Unique Full Game Template/Scripts/Behaviours/DetachFromParentBehaviour.cs
+  uploadId: 749155

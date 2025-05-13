@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: bea61b86b0c4c5e4fb419829c3ccb4c1
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315065
+  packageName: Horror FPS Endless Unique Full Game Template
+  packageVersion: 1.1
+  assetPath: Assets/Aligned Games/Footsteps On Various Materials Sound Effects Audio
+    Package/Loops/Footsteps on Grass (8 Sounds).wav
+  uploadId: 749155

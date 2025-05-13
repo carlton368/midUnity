@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2be6e02e7f1e29f468108a60f3981093
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315065
+  packageName: Horror FPS Endless Unique Full Game Template
+  packageVersion: 1.1
+  assetPath: Assets/Aligned Games/Horror FPS Endless Unique Full Game Template/Shaders/LightSimulationEffect/LightSimulationEffect.shader
+  uploadId: 749155

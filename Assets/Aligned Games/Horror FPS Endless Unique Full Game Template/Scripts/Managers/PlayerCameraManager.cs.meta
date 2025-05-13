@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0ea9ec0696254d7499c4466a4fb65ae0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315065
+  packageName: Horror FPS Endless Unique Full Game Template
+  packageVersion: 1.1
+  assetPath: Assets/Aligned Games/Horror FPS Endless Unique Full Game Template/Scripts/Managers/PlayerCameraManager.cs
+  uploadId: 749155

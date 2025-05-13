@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e7b40881ec6a7ad4b9547908f193cf81
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315065
+  packageName: Horror FPS Endless Unique Full Game Template
+  packageVersion: 1.1
+  assetPath: Assets/Aligned Games/Horror FPS Endless Unique Full Game Template/Scripts/Managers/FollowClampBehaviour.cs
+  uploadId: 749155

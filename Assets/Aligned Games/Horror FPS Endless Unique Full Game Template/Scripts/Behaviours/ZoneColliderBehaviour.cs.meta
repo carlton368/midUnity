@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 6fee9d7ec61c54a408d0d089c349f777
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315065
+  packageName: Horror FPS Endless Unique Full Game Template
+  packageVersion: 1.1
+  assetPath: Assets/Aligned Games/Horror FPS Endless Unique Full Game Template/Scripts/Behaviours/ZoneColliderBehaviour.cs
+  uploadId: 749155

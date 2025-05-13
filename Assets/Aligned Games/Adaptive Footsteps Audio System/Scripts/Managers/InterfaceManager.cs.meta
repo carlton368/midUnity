@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a80bc223a4fe41948ab734e04a3131e5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 315065
+  packageName: Horror FPS Endless Unique Full Game Template
+  packageVersion: 1.1
+  assetPath: Assets/Aligned Games/Adaptive Footsteps Audio System/Scripts/Managers/InterfaceManager.cs
+  uploadId: 749155
