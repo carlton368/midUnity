@@ -4041,7 +4041,7 @@ RectTransform:
   m_GameObject: {fileID: 1231849501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.507137, y: 9.727, z: 9.727}
+  m_LocalScale: {x: 8.507137, y: 12.191822, z: 9.727}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 589501356}
@@ -7347,13 +7347,29 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
       propertyPath: m_Range
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
       propertyPath: m_Cookie
       value: 
-      objectReference: {fileID: 2800000, guid: 7579bfdf03ee92a41ba4e0dc791c5e75, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.73899364
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8791291
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -7363,17 +7379,69 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_Intensity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_SpotAngle
+      value: 35.51147
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_ShadowRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 6455
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453569, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: m_Shadows.m_NearPlane
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453570, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: IsLightOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453570, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: LightTrigger
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690453570, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: BatteryLeftAmount
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1690453570, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
       propertyPath: FlashLightAudioClip
       value: 
       objectReference: {fileID: 8300000, guid: f4b36b67a260cdf40bba6eb5b6a43730, type: 3}
+    - target: {fileID: 1690453570, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: FlashlightBrightness
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 917758975897269910, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
+      propertyPath: footstepSource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 917758975897269910, guid: 4a299fa0d622f264db3cce41501912a3, type: 3}
       propertyPath: baseFootstepDelay
       value: 2.5
