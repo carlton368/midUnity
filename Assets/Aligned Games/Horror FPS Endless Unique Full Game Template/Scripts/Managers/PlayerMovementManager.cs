@@ -6,6 +6,18 @@ namespace AlignedGames
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMovementManager : MonoBehaviour
     {
+        // 사용자 정의 이동 키
+        public KeyCode moveForwardKey = KeyCode.W;
+        public KeyCode moveBackwardKey = KeyCode.S;
+        public KeyCode moveLeftKey = KeyCode.A;
+        public KeyCode moveRightKey = KeyCode.D;
+        
+        // 추가 기능 키
+        public KeyCode jumpKey = KeyCode.Space;
+        public KeyCode runKey = KeyCode.LeftShift;
+        public KeyCode crouchKey = KeyCode.LeftControl;
+        public KeyCode proneKey = KeyCode.Z;
+
         // Player movement variables
         public float walkSpeed = 5f;        // Walking speed
         public float runSpeed = 10f;        // Running speed
@@ -78,24 +90,40 @@ namespace AlignedGames
         {
             float moveDirectionY = moveDirection.y;  // Store current vertical speed (for gravity)
 
-            // Get the input for horizontal and vertical movement (left-right, forward-back)
-            moveDirection = (transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical")).normalized;
+            // 사용자 정의 키를 사용한 이동 입력 처리
+            float horizontalInput = 0f;
+            float verticalInput = 0f;
 
-            // Check for running (holding LeftShift), crouching, or proning states
-            if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && !isSliding && !isProning)
+            // 수평 이동 처리
+            if (Input.GetKey(moveRightKey)) horizontalInput += 1f;
+            if (Input.GetKey(moveLeftKey)) horizontalInput -= 1f;
+            
+            // 수직 이동 처리
+            if (Input.GetKey(moveForwardKey)) verticalInput += 1f;
+            if (Input.GetKey(moveBackwardKey)) verticalInput -= 1f;
+
+            // 이동 방향 계산 (정규화 적용)
+            Vector3 moveInput = (transform.right * horizontalInput + transform.forward * verticalInput);
+            if (moveInput.magnitude > 1f)
+                moveInput.Normalize();
+                
+            moveDirection = moveInput;
+
+            // 달리기, 웅크리기, 엎드리기 상태 확인
+            if (Input.GetKey(runKey) && !isCrouching && !isSliding && !isProning)
             {
-                currentSpeed = runSpeed;  // Set speed to running if LeftShift is held
+                currentSpeed = runSpeed;  // 달리기 속도 적용
             }
             else if (isProning)
             {
-                currentSpeed = proneSpeed;  // Set speed for proning
+                currentSpeed = proneSpeed;  // 엎드리기 속도 적용
             }
             else
             {
-                currentSpeed = isCrouching ? crouchSpeed : walkSpeed;  // Determine walking or crouching speed
+                currentSpeed = isCrouching ? crouchSpeed : walkSpeed;  // 웅크리기 또는 걷기 속도 결정
             }
 
-            // Update movement states based on currentSpeed
+            // 현재 속도에 따른 움직임 상태 업데이트
             if (currentSpeed == runSpeed)
             {
                 isRunning = true;
@@ -112,10 +140,10 @@ namespace AlignedGames
                 isWalking = false;
             }
 
-            // Only set isMoving to true if there's movement input
-            isMoving = moveDirection.magnitude > 0.1f; // Check if the player is giving input (significant movement)
+            // 이동 입력이 있을 때만 isMoving을 true로 설정
+            isMoving = moveDirection.magnitude > 0.1f;
 
-            // Update isMoving when the player is moving
+            // 이동 중일 때 상태 업데이트
             if (isMoving)
             {
                 isWalking = currentSpeed == walkSpeed;
@@ -127,36 +155,36 @@ namespace AlignedGames
                 isRunning = false;
             }
 
-            // Apply movement speed and maintain the vertical speed
+            // 이동 속도 적용 및 수직 속도 유지
             moveDirection *= currentSpeed;
             moveDirection.y = moveDirectionY;
 
-            // Apply gravity to the vertical speed
+            // 중력 적용
             ySpeed += gravity * Time.deltaTime;
             moveDirection.y = ySpeed;
 
-            // Move the player based on the calculated direction and speed
+            // 계산된 방향과 속도로 플레이어 이동
             controller.Move(moveDirection * Time.deltaTime);
         }
 
-        // Handle crouching logic (toggle crouch and transition between states)
+        // 웅크리기 로직 처리
         private void HandleCrouch()
         {
-            if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(crouchKey))
             {
-                if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && !isSliding && !isProning)
+                if (Input.GetKey(runKey) && !isCrouching && !isSliding && !isProning)
                 {
-                    StartSlide();  // Start sliding if shift is held and not crouching or proning
+                    StartSlide();  // 달리는 중에 웅크리기 버튼 누르면 슬라이딩 시작
                 }
                 else
                 {
                     if (isProning)
                     {
-                        // Transition from proning to crouching
+                        // 엎드린 상태에서 웅크리기로 전환
                         isProning = false;
                         isCrouching = true;
                         currentSpeed = crouchSpeed;
-                        controller.height = crouchHeight;  // Set the height to crouch height
+                        controller.height = crouchHeight;
                         targetCameraPosition = new Vector3(
                             playerCamera.transform.localPosition.x,
                             cameraInitialPosition.y - crouchHeight,
@@ -165,12 +193,12 @@ namespace AlignedGames
                     }
                     else
                     {
-                        // Toggle crouch
+                        // 웅크리기 토글
                         isCrouching = !isCrouching;
                         if (isCrouching)
                         {
                             currentSpeed = crouchSpeed;
-                            controller.height = crouchHeight;  // Set height for crouch
+                            controller.height = crouchHeight;
                             targetCameraPosition = new Vector3(
                                 playerCamera.transform.localPosition.x,
                                 cameraInitialPosition.y - crouchHeight,
@@ -179,8 +207,8 @@ namespace AlignedGames
                         }
                         else
                         {
-                            currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;  // Set speed based on input
-                            controller.height = standHeight;  // Reset height to standing
+                            currentSpeed = Input.GetKey(runKey) ? runSpeed : walkSpeed;
+                            controller.height = standHeight;
                             targetCameraPosition = new Vector3(
                                 playerCamera.transform.localPosition.x,
                                 cameraInitialPosition.y,
@@ -192,18 +220,18 @@ namespace AlignedGames
             }
         }
 
-        // Handle proning logic (toggle proning and transition between states)
+        // 엎드리기 로직 처리
         private void HandleProne()
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(proneKey))
             {
                 if (isCrouching)
                 {
-                    // Transition from crouching to proning
+                    // 웅크린 상태에서 엎드리기로 전환
                     isCrouching = false;
                     isProning = true;
                     currentSpeed = proneSpeed;
-                    controller.height = proneHeight;  // Set height to prone height
+                    controller.height = proneHeight;
                     targetCameraPosition = new Vector3(
                         playerCamera.transform.localPosition.x,
                         cameraInitialPosition.y - proneHeight,
@@ -212,12 +240,12 @@ namespace AlignedGames
                 }
                 else
                 {
-                    // Toggle proning
+                    // 엎드리기 토글
                     isProning = !isProning;
                     if (isProning)
                     {
                         currentSpeed = proneSpeed;
-                        controller.height = proneHeight;  // Set height to prone height
+                        controller.height = proneHeight;
                         targetCameraPosition = new Vector3(
                             playerCamera.transform.localPosition.x,
                             cameraInitialPosition.y - proneHeight,
@@ -226,8 +254,8 @@ namespace AlignedGames
                     }
                     else
                     {
-                        currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;  // Set speed based on input
-                        controller.height = standHeight;  // Reset height to standing
+                        currentSpeed = Input.GetKey(runKey) ? runSpeed : walkSpeed;
+                        controller.height = standHeight;
                         targetCameraPosition = new Vector3(
                             playerCamera.transform.localPosition.x,
                             cameraInitialPosition.y,
@@ -238,52 +266,51 @@ namespace AlignedGames
             }
         }
 
-        // Handle jump logic (only when grounded and not sliding or proning)
+        // 점프 로직 처리
         private void HandleJump()
         {
-            if (Input.GetButtonDown("Jump") && controller.isGrounded && !isSliding && !isProning && !isCrouching)
+            if (Input.GetKeyDown(jumpKey) && controller.isGrounded && !isSliding && !isProning && !isCrouching)
             {
-                ySpeed = jumpForce;  // Apply jump force
+                ySpeed = jumpForce;  // 점프 힘 적용
             }
         }
 
-        // Start the sliding action (set the slide state and update camera)
+        // 슬라이딩 시작
         private void StartSlide()
         {
             isSliding = true;
             currentSpeed = slideSpeed;
-            slideTimer = slideDuration;  // Set slide timer
-            isCrouching = true;  // Ensure crouching is active during slide
-            isProning = false;   // Ensure proning is disabled during slide
-            controller.height = crouchHeight;  // Set height to crouch during slide
+            slideTimer = slideDuration;
+            isCrouching = true;
+            isProning = false;
+            controller.height = crouchHeight;
             targetCameraPosition = new Vector3(
                 playerCamera.transform.localPosition.x,
                 cameraInitialPosition.y - slideHeight,
                 playerCamera.transform.localPosition.z
-            );  // Set target camera position for the slide
+            );
         }
 
-        // Handle slide movement and timer
+        // 슬라이딩 이동 및 타이머 처리
         private void HandleSlide()
         {
-            controller.Move(transform.forward * slideSpeed * Time.deltaTime);  // Move forward while sliding
-            slideTimer -= Time.deltaTime;  // Reduce slide timer
+            controller.Move(transform.forward * slideSpeed * Time.deltaTime);
+            slideTimer -= Time.deltaTime;
             if (slideTimer <= 0)
             {
-                EndSlide();  // End slide when timer reaches zero
+                EndSlide();
             }
         }
 
-        // End the slide and reset player states and position
+        // 슬라이딩 종료 및 플레이어 상태 리셋
         private void EndSlide()
         {
             isSliding = false;
             isCrouching = false;
             isProning = false;
-            currentSpeed = walkSpeed;  // Reset speed after sliding
-            controller.height = standHeight;  // Reset height to standing
-            targetCameraPosition = cameraInitialPosition;  // Reset camera position to initial
+            currentSpeed = walkSpeed;
+            controller.height = standHeight;
+            targetCameraPosition = cameraInitialPosition;
         }
     }
-
 }
