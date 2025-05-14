@@ -5526,19 +5526,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1913325700}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1913325702}
-        m_TargetAssemblyTypeName: HTTP.HttpSample_1_HelloWorld, Assembly-CSharp
-        m_MethodName: SendRequest
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1913325700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5586,11 +5574,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1913325697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e80b8ae3b4847e9855a8b797ebe62d, type: 3}
+  m_Script: {fileID: 11500000, guid: a3cb58a408a064a64affae2f672e9ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requestTextUI: {fileID: 1300156318}
-  responseTextUI: {fileID: 1739645724}
+  requestButton: {fileID: 1913325699}
+  resultText: {fileID: 1739645724}
 --- !u!1 &1954388714
 GameObject:
   m_ObjectHideFlags: 0
