@@ -11,11 +11,12 @@ namespace HTTP
         private string userAnswer = "testanswer"; // 테스트용 기본값
 
         // 하드코딩된 퀴즈 정보 (서버에서 제공된 예시와 일치시킴)
-        private string quizId = "c4a9740a-7bf5-4139-933d-706c0e4ba2d7";
+        private string quizId = "";
         private string question = "fffuck";
 
         protected override IEnumerator RequestProcess()
         {
+            quizId = Common.last_quizId;
             // 요청 정보 로깅
             Debug.Log($"퀴즈 제출: ID={quizId}, 질문={question}, 답변={userAnswer}");
             requestTextUI.text = $"POST {Common.Domain}/quiz/submit\n" +

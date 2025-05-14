@@ -7,6 +7,8 @@ namespace HTTP
     {
         public const string Domain = "http://192.168.0.154:8080";
         //      /quiz/latest
+        
+        public static string last_quizId = "";
            
         public static byte[] AudioClipToWav(AudioClip clip)
         {
