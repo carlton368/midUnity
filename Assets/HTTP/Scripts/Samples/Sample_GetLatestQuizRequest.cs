@@ -35,7 +35,7 @@ namespace HTTP
                     string question = jsonObj["question"]?.ToString();
                     
                     // 결과를 UI에 표시
-                    responseTextUI.text = $"퀴즈 ID: {quizId}\n질문: {question}";
+                    responseTextUI.text = $"질문 : \n{question}";
                     
                     // 중요: 최신 퀴즈 ID를 Common 클래스에 저장
                     if (!string.IsNullOrEmpty(quizId))
