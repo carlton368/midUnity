@@ -27,10 +27,9 @@ public class MonsterAI_NoNavMesh : MonoBehaviour
 
             // 몬스터 이동
             transform.position += direction * speed * Time.deltaTime;
-
-            animator.SetBool("Near", true);
-            animator.SetBool("Near", false);
         }
+        
+        animator.SetBool("Near", distance <= stopDistance);
     }
 
     private void OnAnimatorMove()
