@@ -1,12 +1,17 @@
 using System.Collections;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace HTTP
 {
     public class Sample_GetLatestQuizRequest : Sample_Base
     {
+        public float delayTime = 3f;
+        public string responseText = "";
+        public TMP_Text textUI;
+        
         protected override IEnumerator RequestProcess()
         {
             using var webRequest = API_GetLatestQuiz.CreateWebRequest();
@@ -36,6 +41,7 @@ namespace HTTP
                     
                     // 결과를 UI에 표시
                     responseTextUI.text = $"질문 : \n{question}";
+                    Invoke(nameof(DelayedCall), delayTime);
                     
                     // 중요: 최신 퀴즈 ID를 Common 클래스에 저장
                     if (!string.IsNullOrEmpty(quizId))
@@ -70,6 +76,11 @@ namespace HTTP
                 // 기본 퀴즈 ID 유지 (Common.LastQuizId 프로퍼티는 이미 기본값을 반환함)
                 Debug.Log($"기본 퀴즈 ID 유지: {Common.LastQuizId}");
             }
+        }
+
+        private void DelayedCall()
+        {
+            textUI.text = responseText;
         }
     }
 }

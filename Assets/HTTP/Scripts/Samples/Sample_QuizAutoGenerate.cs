@@ -10,7 +10,7 @@ namespace HTTP
     {
         [SerializeField] private Button requestButton;
         [SerializeField] private TextMeshProUGUI resultText;
-        
+        [SerializeField] private TextMeshProUGUI inputText;
         private void Start()
         {
             if (requestButton != null)
@@ -76,5 +76,30 @@ namespace HTTP
             if (requestButton != null)
                 requestButton.onClick.RemoveListener(OnRequestButtonClicked);
         }
+        public void StartAutoExecution()
+        {
+            StartCoroutine(ExecuteAfterDelay());
+        }
+    
+        private IEnumerator ExecuteAfterDelay()
+        {
+            Debug.Log("3초 후 자동 실행이 시작됩니다...");
+            yield return new WaitForSeconds(3f);
+            inputText.text = "a+b";
+            Debug.Log("3초 후 자동 실행이 시작됩니다...");
+            yield return new WaitForSeconds(3f);
+        
+            Sample_QuizSubmit quizGenerator = FindObjectOfType<Sample_QuizSubmit>();
+            
+            if (quizGenerator != null)
+            {
+                quizGenerator.SendRequest();
+            }
+            else
+            {
+                Debug.LogError("Sample_QuizSubmit 컴포넌트를 찾을 수 없습니다!");
+            }
+        }
+
     }
 }

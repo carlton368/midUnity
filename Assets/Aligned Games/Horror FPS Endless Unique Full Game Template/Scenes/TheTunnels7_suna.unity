@@ -10225,7 +10225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1318755367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13409,7 +13409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5912321975417712360, guid: ccb3556bd5bc2284586dac1ce4ca350d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2310111.5
+      value: 2660601.2
       objectReference: {fileID: 0}
     - target: {fileID: 5927768802744113043, guid: ccb3556bd5bc2284586dac1ce4ca350d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -13437,11 +13437,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7025603553801291613, guid: ccb3556bd5bc2284586dac1ce4ca350d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2772130.5
+      value: 3192723.8
       objectReference: {fileID: 0}
     - target: {fileID: 8388228351671729850, guid: ccb3556bd5bc2284586dac1ce4ca350d, type: 3}
       propertyPath: m_Name
       value: HTTPCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516225070156736213, guid: ccb3556bd5bc2284586dac1ce4ca350d, type: 3}
+      propertyPath: textUI
+      value: 
+      objectReference: {fileID: 20975552}
+    - target: {fileID: 8516225070156736213, guid: ccb3556bd5bc2284586dac1ce4ca350d, type: 3}
+      propertyPath: responseText
+      value: result += num
       objectReference: {fileID: 0}
     - target: {fileID: 8516225070156736213, guid: ccb3556bd5bc2284586dac1ce4ca350d, type: 3}
       propertyPath: requestTextUI
