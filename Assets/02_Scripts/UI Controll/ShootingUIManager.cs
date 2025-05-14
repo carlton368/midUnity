@@ -4,7 +4,7 @@ using UnityEngine;
 public class ShootingUIManager : MonoBehaviour
 {
     //싱글톤 전역 변수
-    public static ShootingUIManager Instance { get; set; }
+    public static ShootingUIManager Instance;
     [SerializeField] private GameObject codePanel;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
@@ -24,8 +24,6 @@ public class ShootingUIManager : MonoBehaviour
     }
     public void ShowWinPanel()
     {
-        if (WinorLoseState != WinorLose.win)
-            return;
         Debug.Log("Win");
         winPanel.SetActive(true);
         //GameManager.Instance.AutoRestartGame();
@@ -33,8 +31,6 @@ public class ShootingUIManager : MonoBehaviour
     
     public void ShowLosePanel()
     {
-        if (WinorLoseState != WinorLose.lose)
-            return;
         Debug.Log("Lose");
         losePanel.SetActive(true);
         //GameManager.Instance.AutoRestartGame();
@@ -42,10 +38,15 @@ public class ShootingUIManager : MonoBehaviour
     
     public void ShowCodePanel()
     {
-        if (WinorLoseState != WinorLose.code)
-            return;
         Debug.Log("Code");
-        losePanel.SetActive(true);
+        codePanel.SetActive(true);
+        //GameManager.Instance.AutoRestartGame();
+    }
+    
+    public void CloseCodePanel()
+    {
+        Debug.Log("Code");
+        codePanel.SetActive(false);
         //GameManager.Instance.AutoRestartGame();
     }
     private void Update()
