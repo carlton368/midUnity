@@ -9,6 +9,7 @@ TagManager:
   - Object
   - Pickup
   - Monster
+  - Goal
   layers:
   - Default
   - TransparentFX
