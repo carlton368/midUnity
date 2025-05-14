@@ -47,9 +47,11 @@ public class ShootingUIManager : MonoBehaviour
     {
         Debug.Log("Code");
         codePanel.SetActive(false);
+        DieOrNot();
         //GameManager.Instance.AutoRestartGame();
     }
-    private void Update()
+    public void DieOrNot()
     {
+        Debug.Log("Checking win/lose condition");
     }
 }
