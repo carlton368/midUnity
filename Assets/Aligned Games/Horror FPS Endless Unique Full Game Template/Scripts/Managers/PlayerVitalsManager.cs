@@ -37,8 +37,8 @@ namespace AlignedGames
         public void Update()
         {
             // Update the health UI text.
-            HealthText = GameObject.Find("HealthText");
-            HealthText.GetComponent<Text>().text = Health.ToString("0");
+//            HealthText = GameObject.Find("HealthText");
+//            HealthText.GetComponent<Text>().text = Health.ToString("0");
 
             // Check if the game is not paused.
             if (Time.timeScale == 1)

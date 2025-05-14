@@ -4480,7 +4480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1318755367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8372,6 +8372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   MaxHealth: 100
+  HealthText: {fileID: 0}
   RandomTakeDamageSound:
   - {fileID: 8300000, guid: 2658c7e84b9f689439ec589c0ab26aef, type: 3}
   - {fileID: 8300000, guid: 466ce3eca6063c742a3b1ebe8152f60d, type: 3}
@@ -13420,6 +13421,8 @@ MonoBehaviour:
   BatteryPickupAmount: 100
   FlashlightBrightness: 2
   IsLightOn: 0
+  FlashlightBatteryText: {fileID: 0}
+  LightTrigger: {fileID: 0}
 --- !u!82 &7051791655028204014
 AudioSource:
   m_ObjectHideFlags: 0
