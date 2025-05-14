@@ -43,7 +43,7 @@ namespace HTTP
             }
             catch (Exception ex)
             {
-                Debug.LogError($"퀴즈 정보 추출 오류: {ex.Message}");
+                //Debug.LogError($"퀴즈 정보 추출 오류: {ex.Message}");
                 return false;
             }
         }
