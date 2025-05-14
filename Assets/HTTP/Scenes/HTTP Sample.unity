@@ -1551,7 +1551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1. hello-world
+  m_text: Button (Sample_GetLatestQuizRequest)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a26cac8704b24fa3b6cbc7e1d21626b, type: 2}
   m_sharedMaterial: {fileID: 2181193217689906447, guid: 0a26cac8704b24fa3b6cbc7e1d21626b, type: 2}
@@ -5457,7 +5457,7 @@ GameObject:
   - component: {fileID: 1913325699}
   - component: {fileID: 1913325702}
   m_Layer: 5
-  m_Name: Button (1) - hello-world
+  m_Name: Button (Sample_GetLatestQuizRequest)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
