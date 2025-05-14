@@ -22,27 +22,28 @@ namespace AlignedGames
         public bool IsLightOn;
 
         // Reference to the UI text object that displays the remaining battery amount
-        public GameObject FlashlightBatteryText;
+        // public GameObject FlashlightBatteryText;
 
         // A reference to a game object (possibly a trigger or indicator) related to the flashlight
-        public GameObject LightTrigger;
+        // public GameObject LightTrigger;
 
         // Start is called before the first frame update
         void Start()
         {
             // Initialize the flashlight to be off at the start of the game
             IsLightOn = false;
+            
         }
 
         // Update is called once per frame
         void Update()
         {
             // Find the UI text object for battery display by name and update its value
-            FlashlightBatteryText = GameObject.Find("FlashlightBatteryText");
-            FlashlightBatteryText.GetComponent<Text>().text = BatteryLeftAmount.ToString("0");
+            // FlashlightBatteryText = GameObject.Find("FlashlightBatteryText");
+            // FlashlightBatteryText.GetComponent<Text>().text = BatteryLeftAmount.ToString("0");
 
             // Toggle the flashlight on/off when the player presses the "F" key
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.G))
             {
                 IsLightOn = !IsLightOn;
             }
@@ -59,7 +60,7 @@ namespace AlignedGames
                 GetComponent<Light>().enabled = true;
 
                 // Enable the LightTrigger object
-                LightTrigger.SetActive(true);
+                // LightTrigger.SetActive(true);
             }
             else
             {
@@ -68,7 +69,7 @@ namespace AlignedGames
                 GetComponent<Light>().intensity = 0;
 
                 // Disable the LightTrigger object
-                LightTrigger.SetActive(false);
+                // LightTrigger.SetActive(false);
             }
 
             // Prevent the battery level from exceeding 100%

@@ -14,7 +14,7 @@ namespace AlignedGames
         public float MaxHealth;
 
         // UI element to display health.
-        public GameObject HealthText;
+        // public GameObject HealthText;
 
         // Array of audio clips for random damage sounds.
         public AudioClip[] RandomTakeDamageSound;
@@ -37,23 +37,24 @@ namespace AlignedGames
         public void Update()
         {
             // Update the health UI text.
-            HealthText = GameObject.Find("HealthText");
-            HealthText.GetComponent<Text>().text = Health.ToString("0");
+            // HealthText = GameObject.Find("HealthText");
+            // HealthText.GetComponent<Text>().text = Health.ToString("0");
 
             // Check if the game is not paused.
-            if (Time.timeScale == 1)
+            if (Time.timeScale == 0)
             {
                 // If health is less than or equal to 0, the player dies.
                 if (Health <= 0)
                 {
                     Health = 0; // Ensure health doesn't go below zero.
 
-                    // Disable the player's camera manager, movement manager, and weapons.
-                    GetComponentInChildren<PlayerCameraManager>().enabled = false;
+                    // 캐릭터의 움직임 관리자를 비활성화합니다
                     GetComponent<PlayerMovementManager>().enabled = false;
+                    // 다른 컴포넌트들도 비활성화됩니다
+                    GetComponentInChildren<PlayerCameraManager>().enabled = false;
                     Weapons.SetActive(false);
                     Interface.SetActive(false);
-
+                    
                     // Play the death animation on the camera.
                     MainCamera.GetComponent<Animation>().Play("Death");
 
@@ -66,6 +67,8 @@ namespace AlignedGames
                 {
                     Health = MaxHealth;
                 }
+                
+                
             }
         }
 
