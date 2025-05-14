@@ -838,7 +838,7 @@ GameObject:
   - component: {fileID: 253615619}
   - component: {fileID: 253615618}
   m_Layer: 5
-  m_Name: Button (post -)
+  m_Name: Button (Sample_QuizSubmit)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2392,7 +2392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4. post-echo-json
+  m_text: Button (Sample_QuizSubmit)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a26cac8704b24fa3b6cbc7e1d21626b, type: 2}
   m_sharedMaterial: {fileID: 2181193217689906447, guid: 0a26cac8704b24fa3b6cbc7e1d21626b, type: 2}
@@ -3984,7 +3984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button (2) - grequest quiz
+  m_text: Button (Sample_GetLatestQuizRequest)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a26cac8704b24fa3b6cbc7e1d21626b, type: 2}
   m_sharedMaterial: {fileID: 2181193217689906447, guid: 0a26cac8704b24fa3b6cbc7e1d21626b, type: 2}
@@ -5860,7 +5860,7 @@ GameObject:
   - component: {fileID: 2034278363}
   - component: {fileID: 2034278366}
   m_Layer: 5
-  m_Name: Button (2) - grequest quiz
+  m_Name: Button (Sample_GetLatestQuizRequest)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
