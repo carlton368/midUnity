@@ -13,6 +13,7 @@ namespace HTTP
             
             // 요청 URL을 UI에 표시
             requestTextUI.text = webRequest.uri.ToString();
+            Debug.Log("!!!!!!!!!!!!!!!!!!!!!Sample_GetLatestQuizRequest");
             
             // 요청 보내기
             yield return webRequest.SendWebRequest();
@@ -22,7 +23,7 @@ namespace HTTP
             // 성공 여부 확인 후 처리
             if (webRequest.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
             {
-                Debug.Log($"서버 응답: {webRequest.downloadHandler.text}");
+                Debug.Log($"GetLatestQuizRequest : {webRequest.downloadHandler.text}");
                 
                 try
                 {

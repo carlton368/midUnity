@@ -46,6 +46,7 @@ namespace HTTP
         
             // 응답 처리
             string responseText = webRequest.downloadHandler.text;
+            Debug.Log($"QuizAutoGenerate : {responseText}");
             
             // 퀴즈 ID 추출 시도
             if (API_QuizAutoGenerate.TryExtractQuizInfo(responseText, out string quizId, out string question))

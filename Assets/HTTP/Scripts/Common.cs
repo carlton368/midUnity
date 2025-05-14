@@ -5,7 +5,7 @@ namespace HTTP
 {
     public static class Common
     {
-        public const string Domain = "http://192.168.0.154:8080";
+        public const string Domain = "http://172.16.16.253:8080";
         
         // 기본 퀴즈 ID (서버에서 응답이 없을 경우 사용할 fallback 값)
         private const string DEFAULT_QUIZ_ID = "퀴즈아이디가 없어요";
