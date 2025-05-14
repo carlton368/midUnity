@@ -18,6 +18,7 @@ public class PlayerMonsterCollision : MonoBehaviour
                 HTTP.Sample_GetLatestQuizRequest GetLatestQuizRequest = FindObjectOfType<HTTP.Sample_GetLatestQuizRequest>();
                 if (GetLatestQuizRequest != null)
                 {
+                    ShootingUIManager.Instance.ShowCodePanel();
                     GetLatestQuizRequest.SendRequest();
                     Debug.Log("Player와 Monster가 충돌했습니다. GetLatestQuizRequest 메소드가 호출되었습니다.");
                 }

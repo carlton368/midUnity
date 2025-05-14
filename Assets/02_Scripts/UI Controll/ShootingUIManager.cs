@@ -5,7 +5,7 @@ public class ShootingUIManager : MonoBehaviour
 {
     //싱글톤 전역 변수
     public static ShootingUIManager Instance { get; set; }
-    [SerializeField] private TextMeshProUGUI HPText;
+    [SerializeField] private GameObject codePanel;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
     public WinorLose WinorLoseState;
@@ -14,6 +14,7 @@ public class ShootingUIManager : MonoBehaviour
         notsetted = 0,
         win = 1,
         lose = 2,
+        code = 3,
     }
     private void Awake()
     {
@@ -38,7 +39,15 @@ public class ShootingUIManager : MonoBehaviour
         losePanel.SetActive(true);
         //GameManager.Instance.AutoRestartGame();
     }
-
+    
+    public void ShowCodePanel()
+    {
+        if (WinorLoseState != WinorLose.code)
+            return;
+        Debug.Log("Code");
+        losePanel.SetActive(true);
+        //GameManager.Instance.AutoRestartGame();
+    }
     private void Update()
     {
     }
