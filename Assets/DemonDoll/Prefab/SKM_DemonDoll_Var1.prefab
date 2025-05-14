@@ -760,7 +760,7 @@ SkinnedMeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 45b788d930240084792815c6d0f7008b, type: 2}
   - {fileID: 2100000, guid: ff5b9a1089bb5e141901633b94c1e7c4, type: 2}
-  - {fileID: 2100000, guid: 5facc1beeb4c9214c91e4547070204db, type: 2}
+  - {fileID: 2100000, guid: 2cb979b789f1bee488ca4fffcf92df2b, type: 2}
   - {fileID: 2100000, guid: b537a7929d214ce46beac92c7ed9f754, type: 2}
   - {fileID: 2100000, guid: b537a7929d214ce46beac92c7ed9f754, type: 2}
   m_StaticBatchInfo:
@@ -1126,9 +1126,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2620975524404474784}
   - component: {fileID: 6006494554381806658}
+  - component: {fileID: 8757999998165632319}
   m_Layer: 0
   m_Name: SKM_DemonDoll_Var1
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1177,6 +1178,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &8757999998165632319
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392411146440894746}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &3412943352121971155
 GameObject:
   m_ObjectHideFlags: 0

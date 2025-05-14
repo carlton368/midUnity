@@ -21,8 +21,8 @@ namespace HTTP
         {
             StartCoroutine(SendRequest());
         }
-        
-        private IEnumerator SendRequest()
+
+        public IEnumerator SendRequest()
         {
             if (resultText != null)
                 resultText.text = "요청 전송 중...";
