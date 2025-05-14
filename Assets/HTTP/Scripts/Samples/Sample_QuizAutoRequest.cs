@@ -44,13 +44,30 @@ namespace HTTP
                 yield break;
             }
         
-            // 단순 문자열 응답 처리
-            string responseMessage = webRequest.downloadHandler.text;
-        
-            if (resultText != null)
-                resultText.text = "응답 메시지: " + responseMessage;
-        
-            Debug.Log("퀴즈 자동 생성 요청 성공: " + responseMessage);
+            // 응답 처리
+            string responseText = webRequest.downloadHandler.text;
+            
+            // 퀴즈 ID 추출 시도
+            if (API_QuizAutoGenerate.TryExtractQuizInfo(responseText, out string quizId, out string question))
+            {
+                // 퀴즈 ID가 추출되었으면 저장
+                if (!string.IsNullOrEmpty(quizId))
+                {
+                    Common.LastQuizId = quizId;
+                    Debug.Log($"새 퀴즈 생성됨, ID 업데이트: {quizId}");
+                    
+                    if (resultText != null)
+                        resultText.text = $"새 퀴즈가 생성되었습니다.\n질문: {question}";
+                }
+            }
+            else
+            {
+                // JSON 파싱 실패 또는 퀴즈 ID가 없음
+                if (resultText != null)
+                    resultText.text = "응답 메시지: " + responseText;
+            }
+            
+            Debug.Log("퀴즈 자동 생성 요청 성공: " + responseText);
         }
         
         private void OnDestroy()

@@ -1,6 +1,7 @@
 using System.Collections;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -8,40 +9,35 @@ namespace HTTP
 {
     public class Sample_QuizSubmit : Sample_Base
     {
-        private string userAnswer = "test흑"; // 테스트용 기본값
-
-        // 하드코딩된 퀴즈 정보 (서버에서 제공된 예시와 일치시킴)
-        private string quizId = "8ff7dfe6-b5bd-43e7-b9c6-6e5e3392b1bd";
+        private string userAnswer = "테스트용 기본값"; // 테스트용 기본값
+        [SerializeField] private TextMeshProUGUI userAnswerText;
 
         protected override IEnumerator RequestProcess()
         {
-            // 디버그 확인을 위한 이전 값 저장
-            string previousQuizId = quizId;
-            
-            // Common.last_quizId 값 확인 - 비어있으면 기본값 유지
-            if (!string.IsNullOrEmpty(Common.last_quizId))
+            if (userAnswerText.text != "")
             {
-                quizId = Common.last_quizId;
+                // 사용자 입력값이 있을 경우 사용
+                userAnswer = userAnswerText.text;
             }
-            
-            // quizId가 비어있는지 최종 확인
-            if (string.IsNullOrEmpty(quizId))
+            else
             {
-                Debug.LogWarning("last_quizId가 비어있어서 기본값으로 복원합니다.");
-                quizId = previousQuizId; // 초기 하드코딩된 값으로 복원
+                // 기본값 사용
+                userAnswerText.text = userAnswer;
             }
+            {
+                userAnswer = userAnswerText.text;
+            }
+            // Common 클래스의 LastQuizId 프로퍼티 사용
+            string quizId = Common.LastQuizId;
             
-            Debug.Log($"퀴즈 ID 확인: Common.last_quizId=[{Common.last_quizId}], 최종 quizId=[{quizId}]");
-            
-            // 요청 정보 로깅
-            Debug.Log($"퀴즈 제출: ID={quizId}, 답변={userAnswer}");
+            Debug.Log($"퀴즈 제출 준비: ID={quizId}, 답변={userAnswer}");
             requestTextUI.text = $"POST {Common.Domain}/quiz/submit\n" +
                                 $"퀴즈 ID: {quizId}\n" +
                                 $"답변: {userAnswer}";
 
             // 퀴즈 답변 제출 요청 생성
             using var submitRequest = API_QuizSubmit.CreateWebRequest(quizId, userAnswer);
-            
+
             // 요청 시작 전 원본 요청 데이터 로깅
             var requestData = new API_QuizSubmit.Request
             {

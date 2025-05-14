@@ -6,9 +6,19 @@ namespace HTTP
     public static class Common
     {
         public const string Domain = "http://192.168.0.154:8080";
-        //      /quiz/latest
         
-        public static string last_quizId = "8ff7dfe6-b5bd-43e7-b9c6-6e5e3392b1bd";
+        // 기본 퀴즈 ID (서버에서 응답이 없을 경우 사용할 fallback 값)
+        private const string DEFAULT_QUIZ_ID = "퀴즈아이디가 없어요";
+        
+        // 최신 퀴즈 ID를 저장하는 변수
+        private static string _lastQuizId = DEFAULT_QUIZ_ID;
+        
+        // 퀴즈 ID에 접근하는 프로퍼티
+        public static string LastQuizId 
+        { 
+            get { return string.IsNullOrEmpty(_lastQuizId) ? DEFAULT_QUIZ_ID : _lastQuizId; }
+            set { _lastQuizId = value; }
+        }
            
         public static byte[] AudioClipToWav(AudioClip clip)
         {
@@ -21,6 +31,7 @@ namespace HTTP
              
         private static byte[] ConvertAudioClipDataToWav(float[] samples, int channels, int sampleRate)
         {
+            // 기존 코드 유지
             int byteRate = sampleRate * channels * 2;
             int fileSize = 44 + samples.Length * 2;
                  
