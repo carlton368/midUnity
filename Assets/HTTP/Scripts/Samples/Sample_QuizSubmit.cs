@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
@@ -9,71 +8,79 @@ namespace HTTP
 {
     public class Sample_QuizSubmit : Sample_Base
     {
+        private string userAnswer = "testanswer"; // 테스트용 기본값
+
+        // 하드코딩된 퀴즈 정보 (서버에서 제공된 예시와 일치시킴)
+        private string quizId = "c4a9740a-7bf5-4139-933d-706c0e4ba2d7";
+        private string question = "fffuck";
+
         protected override IEnumerator RequestProcess()
         {
-            // 타임아웃 설정을 조정하여 POST 요청 생성
-            string uri = "http://192.168.0.154:8080/quiz-ai/quiz";
-            var webRequest = new UnityWebRequest(uri, "POST");
-            webRequest.downloadHandler = new DownloadHandlerBuffer();
-            
-            // 빈 JSON 객체를 요청 본문에 추가
-            string jsonData = "{}";
-            byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
-            webRequest.uploadHandler = new UploadHandlerRaw(bodyRaw);
-            
-            webRequest.SetRequestHeader("Content-Type", "application/json");
-            
-            // 타임아웃 10초로 설정 (밀리초 단위)
-            webRequest.timeout = 10;
-            
-            requestTextUI.text = $"요청 URL: {webRequest.uri.ToString()}";
-            Debug.Log($"요청 시작: {uri}");
-            
-            yield return webRequest.SendWebRequest();
+            // 요청 정보 로깅
+            Debug.Log($"퀴즈 제출: ID={quizId}, 질문={question}, 답변={userAnswer}");
+            requestTextUI.text = $"POST {Common.Domain}/quiz/submit\n" +
+                                $"퀴즈 ID: {quizId}\n" +
+                                $"질문: {question}\n" +
+                                $"답변: {userAnswer}";
 
-            if (webRequest.result == UnityWebRequest.Result.ConnectionError || 
-                webRequest.result == UnityWebRequest.Result.ProtocolError ||
-                webRequest.result == UnityWebRequest.Result.DataProcessingError)
+            // 퀴즈 답변 제출 요청 생성
+            using var submitRequest = API_QuizSubmit.CreateWebRequest(quizId, question, userAnswer);
+            
+            // 요청 시작 전 원본 요청 데이터 로깅
+            var requestData = new API_QuizSubmit.Request
             {
-                Debug.LogError($"API 요청 실패: {webRequest.error}");
-                responseTextUI.text = $"오류 발생: {webRequest.error}";
+                quizId = quizId,
+                question = question,
+                userAnswer = userAnswer
+            };
+            
+            Debug.Log("요청 데이터: " + JsonConvert.SerializeObject(requestData));
+            
+            // 요청 보내기
+            yield return submitRequest.SendWebRequest();
+
+            // 오류 처리 (중요: 응답 코드 확인)
+            if (submitRequest.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError($"HTTP 오류: {submitRequest.error}, 상태 코드: {submitRequest.responseCode}");
+                responseTextUI.text = $"오류 발생: {submitRequest.error}\n";
+                
+                // 응답 내용이 있으면 표시
+                if (!string.IsNullOrEmpty(submitRequest.downloadHandler.text))
+                {
+                    responseTextUI.text += "서버 응답: " + submitRequest.downloadHandler.text;
+                }
+                
                 yield break;
             }
 
-            // 서버 응답 구조를 확인하기 위해 raw 텍스트로 처리
-            string responseText = webRequest.downloadHandler.text;
-            Debug.Log("서버 응답: " + responseText);
+            // 정상 응답 처리
+            string submitResponseText = submitRequest.downloadHandler.text;
+            Debug.Log("서버 응답: " + submitResponseText);
             
             try
             {
-                // 일단 결과를 직접 표시
-                responseTextUI.text = responseText;
-                
-                if (string.IsNullOrEmpty(responseText))
+                // 응답이 비어있는지 확인
+                if (string.IsNullOrEmpty(submitResponseText))
                 {
-                    Debug.LogWarning("서버 응답이 비어있습니다");
-                    responseTextUI.text = "서버 응답이 비어있습니다";
+                    responseTextUI.text = "서버 응답이 비어있습니다.";
                     yield break;
                 }
                 
-                // JObject로 파싱해서 구조 확인
-                JObject jsonResponse = JObject.Parse(responseText);
-                string prettyJson = jsonResponse.ToString(Formatting.Indented);
-                Debug.Log("응답 구조: \n" + prettyJson);
+                // JSON 파싱
+                JObject jsonResponse = JObject.Parse(submitResponseText);
                 
-                // 퀴즈 정보 파싱 예시
-                string quizId = jsonResponse["quizId"].ToString();
-                string question = jsonResponse["question"].ToString();
+                // 결과 표시
+                string result = jsonResponse["result"]?.ToString();
+                responseTextUI.text = result ?? "알 수 없는 응답";
                 
-                Debug.Log($"퀴즈 ID: {quizId}, 질문: {question}");
-                responseTextUI.text = $"퀴즈: {question} (ID: {quizId})";
-                
-                // correctAnswer는 백엔드에서만 사용되고 프론트에는 응답하지 않음
+                // 로깅
+                Debug.Log("퀴즈 결과: " + result);
             }
             catch (System.Exception ex)
             {
                 Debug.LogError("JSON 파싱 오류: " + ex.Message);
-                responseTextUI.text = "JSON 파싱 오류: " + ex.Message;
+                responseTextUI.text = "JSON 파싱 오류: " + ex.Message + "\n원본 응답: " + submitResponseText;
             }
         }
     }

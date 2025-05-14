@@ -35,11 +35,11 @@ namespace AlignedGames
         public void Start()
         {
             // Find the PickupText UI element and initialize it
-            // pickupUIText = GameObject.Find("PickupText");
-            // pickupUIText.GetComponent<Text>().text = "";
+            pickupUIText = GameObject.Find("PickupText");
+            pickupUIText.GetComponent<Text>().text = "";
 
             // Save the original position of the text UI element for floating effect
-            //originalTextPosition = pickupUIText.GetComponent<RectTransform>().localPosition;
+            originalTextPosition = pickupUIText.GetComponent<RectTransform>().localPosition;
         }
 
         // Called when another collider enters the trigger collider

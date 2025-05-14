@@ -19,12 +19,12 @@ namespace AlignedGames
             if (Player.GetComponent<CheckMovementBehaviour>().IsMoving)
             {
                 // If the player is moving, play the animation on the crosshair
-                // Crosshair.GetComponent<Animation>().Play();
+                Crosshair.GetComponent<Animation>().Play();
             }
             else
             {
                 // If the player is not moving, stop the animation on the crosshair
-                // Crosshair.GetComponent<Animation>().Stop();
+                Crosshair.GetComponent<Animation>().Stop();
             }
         }
     }

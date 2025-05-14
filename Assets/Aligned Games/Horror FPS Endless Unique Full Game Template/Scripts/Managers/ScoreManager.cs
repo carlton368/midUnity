@@ -116,8 +116,7 @@ namespace AlignedGames
                 }
 
                 // Update the end menu UI with the final scores if the end menu is active.
-                var endmenu = GetComponent<MenuManager>().EndMenu;
-                if (endmenu != null && endmenu.activeSelf)
+                if (GetComponent<MenuManager>().EndMenu.activeSelf)
                 {
                     if ((EndMenuKillsText) && (EndMenuDistanceText) && (EndMenuScoreText))
                     {

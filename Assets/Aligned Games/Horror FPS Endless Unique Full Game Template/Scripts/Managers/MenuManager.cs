@@ -12,8 +12,8 @@ namespace AlignedGames
         public bool InGame;
 
         // Reference to the Pause, Start, and End menus
-        // public GameObject PauseMenu;
-        // public GameObject StartMenu;
+        public GameObject PauseMenu;
+        public GameObject StartMenu;
         public GameObject EndMenu;
 
         // Reference to the player object
@@ -33,10 +33,9 @@ namespace AlignedGames
             if (InGame)
             {
                 // Set the appropriate menus visibility
-                //PauseMenu.SetActive(false);
-                // StartMenu.SetActive(true);
-                if (EndMenu != null)
-                    EndMenu.SetActive(false);
+                PauseMenu.SetActive(false);
+                StartMenu.SetActive(true);
+                EndMenu.SetActive(false);
 
                 // Pause the game by setting time scale to 0
                 Time.timeScale = 0;
@@ -46,8 +45,8 @@ namespace AlignedGames
                 Cursor.visible = true;
 
                 // Disable player controls (camera and weapon management) during the start menu
-                // Player.GetComponentInChildren<PlayerCameraManager>().enabled = false;
-                // Player.GetComponentInChildren<WeaponManager>().enabled = false;
+                Player.GetComponentInChildren<PlayerCameraManager>().enabled = false;
+                Player.GetComponentInChildren<WeaponManager>().enabled = false;
             }
         }
 
@@ -75,7 +74,7 @@ namespace AlignedGames
                         Player.GetComponentInChildren<WeaponManager>().enabled = false;
 
                         // Activate the pause menu
-                        // PauseMenu.SetActive(true);
+                        PauseMenu.SetActive(true);
                     }
                     // If the game is already paused, resume it
                     else
@@ -92,7 +91,7 @@ namespace AlignedGames
                         Player.GetComponentInChildren<WeaponManager>().enabled = true;
 
                         // Deactivate the pause menu
-                        // PauseMenu.SetActive(false);
+                        PauseMenu.SetActive(false);
                     }
                 }
             }
@@ -154,8 +153,8 @@ namespace AlignedGames
             Player.GetComponentInChildren<WeaponManager>().enabled = true;
 
             // Deactivate the pause menu and start menu
-            // PauseMenu.SetActive(false);
-            // StartMenu.SetActive(false);
+            PauseMenu.SetActive(false);
+            StartMenu.SetActive(false);
         }
 
         // Method to open the first URL in the browser
